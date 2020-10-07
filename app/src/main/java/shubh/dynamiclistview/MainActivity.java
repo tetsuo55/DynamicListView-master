@@ -1,10 +1,13 @@
 package shubh.dynamiclistview;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -12,10 +15,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.github.danielfelgar.drawreceiptlib.ReceiptBuilder;
+import com.mazenrashed.printooth.Printooth;
+import com.mazenrashed.printooth.data.printable.ImagePrintable;
+import com.mazenrashed.printooth.data.printable.Printable;
+import com.mazenrashed.printooth.ui.ScanningActivity;
 import com.mazenrashed.printooth.utilities.Printing;
 import com.mazenrashed.printooth.utilities.PrintingCallback;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,12 +60,24 @@ public class MainActivity extends Activity implements PrintingCallback {
         if(printing !=null)
                 printing.setPrintingCallback(this);
         //event
-        btn_unpair_pair.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        btn_unpair_pair.setOnClickListener(View -> {
+            if(Printooth.INSTANCE.hasPairedPrinter())
+                Printooth.INSTANCE.removeCurrentPrinter();
+            else
+            {
+                startActivityForResult(new Intent(MainActivity.this, ScanningActivity.class),ScanningActivity.SCANNING_FOR_PRINTER);
+                changePairAndUnpair();
             }
         });
+
+        btn_print.setOnClickListener(view -> {
+            if(!Printooth.INSTANCE.hasPairedPrinter())
+                startActivityForResult(new Intent(this, ScanningActivity.class), ScanningActivity.SCANNING_FOR_PRINTER);
+            else
+                PrintImages();
+        });
+
+        changePairAndUnpair();
 
         final String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
 
@@ -210,28 +232,79 @@ public class MainActivity extends Activity implements PrintingCallback {
         });
     }
 
+    private void PrintImages() {
+        ArrayList<Printable> printables = new ArrayList<>();
+
+        //Load image from internet (needs to load image from ivRFeceipt instead
+        Picasso.get()
+                .load("https://www.google.com/url?sa=i&url=http%3A%2F%2Fsimpleicon.com%2Frocket.html&psig=AOvVaw1ZuFiSyrcR9KZn2EbuziWf&ust=1602183645515000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJj7gauVo-wCFQAAAAAdAAAAABAD")
+                .into(new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        printables.add(new ImagePrintable.Builder(bitmap).build());
+
+                        printing.print(printables);
+
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                });
+
+    }
+
+    private void changePairAndUnpair() {
+        if(Printooth.INSTANCE.hasPairedPrinter())
+            btn_unpair_pair.setText(new StringBuilder("Unpair ")
+                    .append(Printooth.INSTANCE.getPairedPrinter().getName()).toString());
+        else
+            btn_unpair_pair.setText("Pair with printer");
+    }
+
     @Override
     public void connectingWithPrinter() {
-
+        Toast.makeText(this, "Connecting to Printer", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void connectionFailed(String s) {
-
+        Toast.makeText(this, "Failed: "+s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(String s) {
-
+        Toast.makeText(this, "Error: "+s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onMessage(String s) {
-
+        Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void printingOrderSentSuccessfully() {
+        Toast.makeText(this, "Order sent to printer", Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ScanningActivity.SCANNING_FOR_PRINTER && resultCode == Activity.RESULT_OK)
+            initPrinting();
+        changePairAndUnpair();
+    }
+
+    private void initPrinting() {
+        if (Printooth.INSTANCE.hasPairedPrinter())
+            printing = Printooth.INSTANCE.printer();
+        if (printing != null)
+            printing.setPrintingCallback(this);
     }
 }
