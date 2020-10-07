@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="products">
+        <item>Beer</item>
+        <item>Whiskey</item>
+        <item>Candy</item>
+        <item>Popcorn</item>
+    </string-array>
+
+    <integer-array name="products_price">
+        <item>500</item>
+        <item>700</item>
+        <item>200</item>
+        <item>100</item>
+    </integer-array>
+</resources>
