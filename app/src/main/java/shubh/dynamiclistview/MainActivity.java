@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -57,21 +56,20 @@ public class MainActivity extends Activity implements PrintingCallback {
         btn_unpair_pair = (Button) findViewById(R.id.BtnPairUnpair);
         btn_print = (Button) findViewById(R.id.BtnPrint);
 
-        if(printing !=null)
-                printing.setPrintingCallback(this);
+        if (printing != null)
+            printing.setPrintingCallback(this);
         //event
         btn_unpair_pair.setOnClickListener(View -> {
-            if(Printooth.INSTANCE.hasPairedPrinter())
+            if (Printooth.INSTANCE.hasPairedPrinter())
                 Printooth.INSTANCE.removeCurrentPrinter();
-            else
-            {
-                startActivityForResult(new Intent(MainActivity.this, ScanningActivity.class),ScanningActivity.SCANNING_FOR_PRINTER);
+            else {
+                startActivityForResult(new Intent(MainActivity.this, ScanningActivity.class), ScanningActivity.SCANNING_FOR_PRINTER);
                 changePairAndUnpair();
             }
         });
 
         btn_print.setOnClickListener(view -> {
-            if(!Printooth.INSTANCE.hasPairedPrinter())
+            if (!Printooth.INSTANCE.hasPairedPrinter())
                 startActivityForResult(new Intent(this, ScanningActivity.class), ScanningActivity.SCANNING_FOR_PRINTER);
             else
                 PrintImages();
@@ -169,7 +167,7 @@ public class MainActivity extends Activity implements PrintingCallback {
                 for (int i = 0; i < listview.getCount(); i++) {
                     String item = ListElementsArrayList.get(i);
 
-                    int finalprice =  getApplicationContext().getResources().getIntArray(R.array.products_price)[productArrayList.indexOf(item)];
+                    int finalprice = getApplicationContext().getResources().getIntArray(R.array.products_price)[productArrayList.indexOf(item)];
 
                     float price = finalprice / 100f;
 
@@ -183,9 +181,9 @@ public class MainActivity extends Activity implements PrintingCallback {
                     }
 
 
-                    HashMap<String, Integer> items  = new HashMap<>();
-                    for(String newItem: product) {
-                        if(!items.containsKey(newItem)) items.put(newItem, 1);
+                    HashMap<String, Integer> items = new HashMap<>();
+                    for (String newItem : product) {
+                        if (!items.containsKey(newItem)) items.put(newItem, 1);
                         else items.put(newItem, items.get(newItem) + 1);
                     }
                     totalprice += finalprice;
@@ -196,11 +194,11 @@ public class MainActivity extends Activity implements PrintingCallback {
                         receipt.setAlign(Paint.Align.LEFT).
                                 addText(ItemArray[i][2] + "x" + ItemArray[i][0], false).
                                 setAlign(Paint.Align.RIGHT).
-                        addText("€" + String.format("%.2f", Float.parseFloat(ItemArray[i][1])));
+                                addText("€" + String.format("%.2f", Float.parseFloat(ItemArray[i][1])));
                     }
                 }
 
-                float ExclBtw = totalprice / 100f * 0.91f ;
+                float ExclBtw = totalprice / 100f * 0.91f;
                 float BTW = totalprice / 100f * 0.09f;
                 float totalpricefloat = totalprice / 100f;
                 receipt.setTypeface(getApplicationContext(), "fonts/RobotoMono-Regular.ttf").
@@ -237,7 +235,7 @@ public class MainActivity extends Activity implements PrintingCallback {
 
         //Load image from internet (needs to load image from ivRFeceipt instead
         Picasso.get()
-                .load("https://www.google.com/url?sa=i&url=http%3A%2F%2Fsimpleicon.com%2Frocket.html&psig=AOvVaw1ZuFiSyrcR9KZn2EbuziWf&ust=1602183645515000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJj7gauVo-wCFQAAAAAdAAAAABAD")
+                .load("http://simpleicon.com/wp-content/uploads/rocket.png")
                 .into(new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -261,7 +259,7 @@ public class MainActivity extends Activity implements PrintingCallback {
     }
 
     private void changePairAndUnpair() {
-        if(Printooth.INSTANCE.hasPairedPrinter())
+        if (Printooth.INSTANCE.hasPairedPrinter())
             btn_unpair_pair.setText(new StringBuilder("Unpair ")
                     .append(Printooth.INSTANCE.getPairedPrinter().getName()).toString());
         else
@@ -275,12 +273,12 @@ public class MainActivity extends Activity implements PrintingCallback {
 
     @Override
     public void connectionFailed(String s) {
-        Toast.makeText(this, "Failed: "+s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Failed: " + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onError(String s) {
-        Toast.makeText(this, "Error: "+s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Error: " + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -296,7 +294,7 @@ public class MainActivity extends Activity implements PrintingCallback {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ScanningActivity.SCANNING_FOR_PRINTER && resultCode == Activity.RESULT_OK)
+        if (requestCode == ScanningActivity.SCANNING_FOR_PRINTER && resultCode == Activity.RESULT_OK)
             initPrinting();
         changePairAndUnpair();
     }

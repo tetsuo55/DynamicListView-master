@@ -32,12 +32,12 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Print" />
+
         <Button
             android:id="@+id/BtnPairUnpair"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Pair" />
-
 
 
         <ListView
