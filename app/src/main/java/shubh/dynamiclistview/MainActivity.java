@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -232,22 +233,24 @@ public class MainActivity extends Activity implements PrintingCallback {
 
     private void PrintImages() {
         ArrayList<Printable> printables = new ArrayList<>();
-
+        Log.d("Printapp", "PrintImages called");
         //Load image from internet (needs to load image from ivRFeceipt instead
         Picasso.get()
-                .load("http://simpleicon.com/wp-content/uploads/rocket.png")
+                .load(R.drawable.barcode)
+                .resize(201, 60)
                 .into(new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         printables.add(new ImagePrintable.Builder(bitmap).build());
-
-                        printing.print(printables);
+                        Log.d("Printapp", "Image added");
+                        Printooth.INSTANCE.printer().print(printables);
+                        Log.d("Printapp", "picasso print");
 
                     }
 
                     @Override
                     public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-
+                        Log.d("Printapp", "Picasso bitmap error");
                     }
 
                     @Override
@@ -296,6 +299,7 @@ public class MainActivity extends Activity implements PrintingCallback {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == ScanningActivity.SCANNING_FOR_PRINTER && resultCode == Activity.RESULT_OK)
             initPrinting();
+        Log.d("Printapp", "init printing");
         changePairAndUnpair();
     }
 
