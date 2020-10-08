@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +57,7 @@ public class MainActivity extends Activity implements PrintingCallback {
         ivReceipt = findViewById(R.id.ivReceipt);
         btn_unpair_pair = (Button) findViewById(R.id.BtnPairUnpair);
         btn_print = (Button) findViewById(R.id.BtnPrint);
+
 
         if (printing != null)
             printing.setPrintingCallback(this);
@@ -234,14 +236,18 @@ public class MainActivity extends Activity implements PrintingCallback {
     private void PrintImages() {
         ArrayList<Printable> printables = new ArrayList<>();
         Log.d("Printapp", "PrintImages called");
+        ImageView imageView = findViewById(R.id.ivReceipt);
+        Bitmap bonnetje = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
+        Bitmap kleinbonnetje = Bitmap.createScaledBitmap(
+                bonnetje, 600, 500, false);
         //Load image from internet (needs to load image from ivRFeceipt instead
         Picasso.get()
-                .load(R.drawable.iv)
+                .load(R.drawable.barcode)
                 .resize(402, 121)
                 .into(new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                        printables.add(new ImagePrintable.Builder(bitmap).build());
+                        printables.add(new ImagePrintable.Builder(kleinbonnetje).build());
                         Log.d("Printapp", "Image added");
                         Printooth.INSTANCE.printer().print(printables);
                         Log.d("Printapp", "picasso print");
