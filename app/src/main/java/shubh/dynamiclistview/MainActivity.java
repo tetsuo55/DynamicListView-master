@@ -236,8 +236,8 @@ public class MainActivity extends Activity implements PrintingCallback {
         Log.d("Printapp", "PrintImages called");
         //Load image from internet (needs to load image from ivRFeceipt instead
         Picasso.get()
-                .load(R.drawable.barcode)
-                .resize(201, 60)
+                .load(R.drawable.iv)
+                .resize(402, 121)
                 .into(new Target() {
                     @Override
                     public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/DynamicListView-master.iml" filepath="$PROJECT_DIR$/.idea/modules/DynamicListView-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/DynamicListView-master.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/DynamicListView-master.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/printooth/DynamicListView-master.printooth.iml" filepath="$PROJECT_DIR$/.idea/modules/printooth/DynamicListView-master.printooth.iml" />
     </modules>
   </component>
 </project>
