@@ -1,16 +1,508 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="products">
-        <item>Beer</item>
-        <item>Whiskey</item>
-        <item>Candy</item>
-        <item>Popcorn</item>
+        <item>ABSOLUT VODKA GLAS</item>
+        <item>ABSOLUT VODKA 70 CL</item>
+        <item>AMARETTO GLAS</item>
+        <item>AMARETTO BROWNIE</item>
+        <item>APPELSAP</item>
+        <item>APPELTAART</item>
+        <item>ASAHI SUPER DRY</item>
+        <item>AUTODROP</item>
+        <item>AVOCADO MAKI</item>
+        <item>B52</item>
+        <item>BACARDI GLAS</item>
+        <item>BACARDI 100 CL</item>
+        <item>BACARDI 8YO 70 CL</item>
+        <item>BACARDI LEMON</item>
+        <item>BACARDI RAZZ</item>
+        <item>BACARDI RESERVA</item>
+        <item>BAILEYS</item>
+        <item>BELVEDERE GLAS</item>
+        <item>BELVEDERE 70 CL</item>
+        <item>BITTER LEMON</item>
+        <item>BITTERBALLEN</item>
+        <item>BOLLS ZEER OUDE JENEVER</item>
+        <item>BORRELPLANK</item>
+        <item>BULLDOG GIN</item>
+        <item>BURGER</item>
+        <item>CABERNET SAUVIGNON</item>
+        <item>CALIFORNIA ROLL</item>
+        <item>CAPPUCCINO</item>
+        <item>CAPTAIN MORGAN OLD SPICE</item>
+        <item>CAPTAIN MORGAN SPICED GOLD 100 CL</item>
+        <item>CARPACCIO</item>
+        <item>CHARDONNAY</item>
+        <item>CHAUDFONTAINE BLAUW</item>
+        <item>CHAUDFONTAINE ROOD</item>
+        <item>CHEESECAKE</item>
+        <item>CHICKEN WINGS</item>
+        <item>CHIVAS 12 YO</item>
+        <item>CHIVAS 18 YO</item>
+        <item>CHIVAS 21 YO</item>
+        <item>CHOCOMEL</item>
+        <item>CHUKA WAKAME</item>
+        <item>COCA COLA.</item>
+        <item>COCA COLA LIGHT</item>
+        <item>COCA COLA ZERO</item>
+        <item>COCKTAIL MELON MOJITO</item>
+        <item>COCKTAIL PASSION ENERGY</item>
+        <item>COCKTAIL RED GINGER</item>
+        <item>COEBERGH BESSEN JENEVER</item>
+        <item>CONTREAU</item>
+        <item>COPPERHEAD GIN</item>
+        <item>CORONA</item>
+        <item>COURVOISIER VSOP</item>
+        <item>CRABSTICK MAKI</item>
+        <item>CRISPY CHICKEN.</item>
+        <item>CRISPY CHICKEN ROLL</item>
+        <item>CRISPY CRAB ROLL</item>
+        <item>CRISPY EBI PRAWN ROLL</item>
+        <item>DE TEDERE KIP</item>
+        <item>DESPERADOS</item>
+        <item>DOUBLE TROUBLE ROLL</item>
+        <item>DRAMBUIE</item>
+        <item>DUBELLE ESPRESSO</item>
+        <item>EBI PANKO</item>
+        <item>EDAMAME</item>
+        <item>ERISTOFF RED</item>
+        <item>ERISTOFF VODKA</item>
+        <item>ESPRESSO</item>
+        <item>FANTA CASSIS</item>
+        <item>FANTA ORANGE</item>
+        <item>FENTIMANS MANDARIN EN SEVILLE</item>
+        <item>FENTIMANS ROSE LEMONADE</item>
+        <item>FENTIMANS SPARKLING RASPBERRY</item>
+        <item>FENTIMANS TROPICAL SODA</item>
+        <item>FENTIMANS VICTORIAN LEMONADE</item>
+        <item>FEVERTREE TONIC</item>
+        <item>FLAMED BEEF LOIN ROLL</item>
+        <item>FLES AIX ROSE</item>
+        <item>FLES CABERNET SAUVIGNON</item>
+        <item>FLES CHABLIS VAUDON</item>
+        <item>FLES CHARDONNAY</item>
+        <item>FLES LAFORET BOURGOGNE CHARDONNAY</item>
+        <item>FLES MERLOT</item>
+        <item>FLES ROSE</item>
+        <item>FLES SAUVIGNON BLANC</item>
+        <item>FLES TORRES, MAS RABELL BLANCO</item>
+        <item>FLES TORRES, MAS RABELL TINTO</item>
+        <item>FRANGELICO</item>
+        <item>FRENCH COFFEE</item>
+        <item>FRENCHED RACK</item>
+        <item>FRISTI</item>
+        <item>GAMBASPIESJES</item>
+        <item>GEBAKKEN GROENTE</item>
+        <item>GEBAKKEN NOEDELS</item>
+        <item>GEBAKKEN RIJST</item>
+        <item>GINGER ALE</item>
+        <item>GINGER BEER</item>
+        <item>GORDON GIN.</item>
+        <item>GORDON GIN PINK</item>
+        <item>GRAND MARNIER</item>
+        <item>GREY GOOSE.</item>
+        <item>GREY GOOSE 70 CL</item>
+        <item>GRIMBERGEN BLOND</item>
+        <item>GRIMBERGEN DUBBEL</item>
+        <item>GRIMBERGEN TRIPEL</item>
+        <item>GROLSCH.</item>
+        <item>GROLSCH IPA</item>
+        <item>GROLSCH RADLER CITROEN.</item>
+        <item>GROLSCH RADLER CITROEN 0,0</item>
+        <item>GYOZA</item>
+        <item>HENDRICKS GIN</item>
+        <item>HENNESSY.</item>
+        <item>HENNESSY 70 CL</item>
+        <item>HENNESSY VSOP.</item>
+        <item>HENNESSY VSOP 100 CL</item>
+        <item>HENNESSY XO.</item>
+        <item>HENNESSY XO 70 CL</item>
+        <item>HOPPE VIEUX</item>
+        <item>IJSMACARONE PASSION</item>
+        <item>IJSMACARONE PISTACHE</item>
+        <item>IJSMACARONE RED</item>
+        <item>IRISH COFFEE</item>
+        <item>ITALIAN COFFEE</item>
+        <item>JACK DANIELS.</item>
+        <item>JACK DANIELS 100 CL</item>
+        <item>JACK DANIELS gentlemans jack.</item>
+        <item>JACK DANIELS GENTLEMANS JACK 70 CL</item>
+        <item>JACK DANIELS single barrel.</item>
+        <item>JACK DANIELS SINGLE BARREL 70 CL</item>
+        <item>JAGERMEISTER</item>
+        <item>JAMESON </item>
+        <item>JOHNNY BLACK.</item>
+        <item>JOHNNY BLACK 100 CL</item>
+        <item>JOHNNY BLUE.</item>
+        <item>JOHNNY BLUE 70 CL</item>
+        <item>JOHNNY GOLD.</item>
+        <item>JOHNNY GOLD 70 CL</item>
+        <item>JOHNNY RED</item>
+        <item>JUS D’ ORANGE</item>
+        <item>KAASTENGELS</item>
+        <item>KAPPA MAKI</item>
+        <item>KETEL 1 JONGE JENEVER</item>
+        <item>KING JACOB</item>
+        <item>KIPSPIESJES</item>
+        <item>KOFFIE.</item>
+        <item>KOFFIE VERKEERD</item>
+        <item>KORNUIT 0,5 L</item>
+        <item>KORNUIT FLUIT</item>
+        <item>KORNUIT PULL</item>
+        <item>KORNUIT SCHUIMPIE</item>
+        <item>KORNUIT VAAS</item>
+        <item>LATTE MACHIATO</item>
+        <item>LICOR 43</item>
+        <item>LIPTON TEA.</item>
+        <item>LIPTON TEA GREEN</item>
+        <item>LOEMPIA’S</item>
+        <item>LOUIS ROEDERER CRISTAL 75 CL</item>
+        <item>LOUIS ROEDERER, BRUT PREMIER</item>
+        <item>MALIBU</item>
+        <item>MERLOT</item>
+        <item>MISO GAMBA’S</item>
+        <item>MISO KREEFT</item>
+        <item>MOCKTAIL MELON MOJITO</item>
+        <item>MOCKTAIL PASSION ENERGY</item>
+        <item>MOCKTAIL RED GINGER</item>
+        <item>MÖET EN CHANDON ICE IMPÉRIAL.</item>
+        <item>MÖET EN CHANDON ICE IMPÉRIAL ROSE</item>
+        <item>NACHO’S</item>
+        <item>NIGIRI AVOCADO</item>
+        <item>NIGIRI FLAMED SALMON</item>
+        <item>NIGIRI FLAMED SEA BASS</item>
+        <item>NIGIRI FLAMED TUNA</item>
+        <item>NIGIRI SALMON.</item>
+        <item>NIGIRI SALMON TARTARE GUNKAN</item>
+        <item>NIGIRI TUNA.</item>
+        <item>NIGIRI TUNA TARTARE GUNKAN</item>
+        <item>OESTERS</item>
+        <item>OSSENHAAS</item>
+        <item>OSSENHAASSPIESJES</item>
+        <item>PATATJE.</item>
+        <item>PATATJE BIEF</item>
+        <item>PATATJE GAMBA’S</item>
+        <item>PATATJE KIP</item>
+        <item>PATATJE MET</item>
+        <item>PERONI LIBERA</item>
+        <item>PINA COLADA.</item>
+        <item>PINA COLADA SORBET</item>
+        <item>PISANG AMBON</item>
+        <item>POKE BOWL CALIFORNIA</item>
+        <item>POKE BOWL CRISPY CHICKEN</item>
+        <item>POKE BOWL GYUNIKU</item>
+        <item>POKE BOWL PRAWN</item>
+        <item>POKE BOWL SALMON</item>
+        <item>POKE BOWL TUNA</item>
+        <item>POKE BOWL VEGA</item>
+        <item>POKE SALADE CALIFORNIA</item>
+        <item>POKE SALADE CRISPY CHICKEN</item>
+        <item>POKE SALADE GYUNIKU</item>
+        <item>POKE SALADE PRAWN</item>
+        <item>POKE SALADE SALMON</item>
+        <item>POKE SALADE TUNA</item>
+        <item>POKE SALADE VEGA</item>
+        <item>PORNSTAR MARTINI</item>
+        <item>PRAWN ROLL.</item>
+        <item>RED BULL</item>
+        <item>REMY MARTIN VSOP.</item>
+        <item>REMY MARTIN VSOP 70 CL</item>
+        <item>REMY MARTIN XO</item>
+        <item>RODE PORT</item>
+        <item>RONDJE BIER VOOR HET PERSONEEL</item>
+        <item>ROSE</item>
+        <item>RUBY CUBE</item>
+        <item>SAFARI</item>
+        <item>SALMARI DROP</item>
+        <item>SALMON AVOCADO ROLL</item>
+        <item>SALMON MAKI</item>
+        <item>SALMON TARTARE ROLL</item>
+        <item>SAMBUCCA.</item>
+        <item>SAMBUCCA SHOT</item>
+        <item>SASHIMI FLAMED SALMON</item>
+        <item>SASHIMI FLAMED TUNA</item>
+        <item>SASHIMI SALMON</item>
+        <item>SASHIMI TUNA</item>
+        <item>SAUVIGNON BLANC</item>
+        <item>SCAVI EN RAY PROSECCO FRIZZANTE</item>
+        <item>SINT JACOBS SCHELP</item>
+        <item>SODA WATER</item>
+        <item>SOUTHERN COMFORT</item>
+        <item>SPANISH COFFEE</item>
+        <item>SPRITE</item>
+        <item>STICKY BROWNIE</item>
+        <item>STRAWBERRY DAIQUIRI</item>
+        <item>SUSHI EN SASHIMI PLANK</item>
+        <item>TEQUILA GOLD</item>
+        <item>THEE</item>
+        <item>TIA MARIA</item>
+        <item>TONIC</item>
+        <item>TORRES, IMPERIAL 10Y BRANDY</item>
+        <item>TORRES, MAS RABELL BLANCO</item>
+        <item>TORRES, MAS RABELL TINTO</item>
+        <item>TUNA AVOCADO ROLL</item>
+        <item>TUNA MAKI</item>
+        <item>TUNA TARTARE ROLL</item>
+        <item>VEGA ROLL</item>
+        <item>VERSE MUNTTHEE</item>
+        <item>WIECKSE ROSE</item>
+        <item>ZALM</item>
+        <item>ZEEBAARS</item>
+        <item>ZOETE WITTE WIJN</item>
+
+
     </string-array>
 
     <integer-array name="products_price">
+        <item>450</item>
+        <item>375</item>
+        <item>400</item>
+        <item>900</item>
+        <item>275</item>
+        <item>400</item>
+        <item>430</item>
+        <item>300</item>
+        <item>450</item>
+        <item>450</item>
+        <item>400</item>
+        <item>9000</item>
+        <item>10000</item>
+        <item>425</item>
+        <item>425</item>
+        <item>450</item>
+        <item>400</item>
+        <item>650</item>
+        <item>11000</item>
+        <item>250</item>
         <item>500</item>
+        <item>275</item>
+        <item>1950</item>
+        <item>450</item>
+        <item>1250</item>
+        <item>395</item>
+        <item>1250</item>
+        <item>250</item>
+        <item>450</item>
+        <item>9000</item>
+        <item>900</item>
+        <item>395</item>
+        <item>250</item>
+        <item>250</item>
+        <item>450</item>
+        <item>500</item>
+        <item>500</item>
+        <item>900</item>
+        <item>2100</item>
+        <item>275</item>
+        <item>350</item>
+        <item>250</item>
+        <item>250</item>
+        <item>250</item>
+        <item>975</item>
+        <item>975</item>
+        <item>975</item>
+        <item>275</item>
+        <item>450</item>
+        <item>900</item>
+        <item>475</item>
+        <item>550</item>
+        <item>550</item>
+        <item>550</item>
+        <item>1350</item>
+        <item>1450</item>
+        <item>1450</item>
+        <item>1500</item>
+        <item>375</item>
+        <item>1850</item>
+        <item>400</item>
+        <item>350</item>
+        <item>550</item>
+        <item>450</item>
+        <item>400</item>
+        <item>400</item>
+        <item>220</item>
+        <item>250</item>
+        <item>250</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>400</item>
+        <item>350</item>
+        <item>1450</item>
+        <item>2950</item>
+        <item>2250</item>
+        <item>4950</item>
+        <item>2250</item>
+        <item>3950</item>
+        <item>2250</item>
+        <item>2250</item>
+        <item>2250</item>
+        <item>2750</item>
+        <item>2750</item>
+        <item>400</item>
+        <item>675</item>
+        <item>2050</item>
+        <item>275</item>
+        <item>850</item>
+        <item>350</item>
+        <item>350</item>
+        <item>350</item>
+        <item>275</item>
+        <item>375</item>
+        <item>425</item>
+        <item>400</item>
+        <item>450</item>
+        <item>650</item>
+        <item>11000</item>
+        <item>475</item>
+        <item>475</item>
+        <item>475</item>
+        <item>275</item>
+        <item>450</item>
+        <item>275</item>
+        <item>275</item>
+        <item>550</item>
+        <item>630</item>
+        <item>500</item>
+        <item>9000</item>
+        <item>1000</item>
+        <item>20000</item>
+        <item>2750</item>
+        <item>33000</item>
+        <item>275</item>
+        <item>800</item>
+        <item>800</item>
+        <item>800</item>
+        <item>675</item>
+        <item>675</item>
+        <item>450</item>
+        <item>9000</item>
+        <item>550</item>
+        <item>10000</item>
+        <item>680</item>
+        <item>12000</item>
+        <item>275</item>
+        <item>400</item>
+        <item>475</item>
+        <item>10000</item>
+        <item>2750</item>
+        <item>30000</item>
+        <item>650</item>
+        <item>11000</item>
+        <item>400</item>
+        <item>275</item>
+        <item>550</item>
+        <item>450</item>
+        <item>275</item>
+        <item>2000</item>
+        <item>600</item>
+        <item>220</item>
+        <item>280</item>
+        <item>500</item>
+        <item>240</item>
+        <item>450</item>
+        <item>340</item>
+        <item>260</item>
+        <item>280</item>
+        <item>400</item>
+        <item>300</item>
+        <item>300</item>
+        <item>350</item>
+        <item>77500</item>
+        <item>7000</item>
+        <item>400</item>
+        <item>395</item>
+        <item>1700</item>
+        <item>3500</item>
+        <item>550</item>
+        <item>550</item>
+        <item>550</item>
+        <item>11000</item>
+        <item>12000</item>
+        <item>650</item>
+        <item>350</item>
+        <item>500</item>
+        <item>500</item>
+        <item>600</item>
+        <item>400</item>
+        <item>575</item>
+        <item>500</item>
+        <item>675</item>
+        <item>900</item>
+        <item>1675</item>
         <item>700</item>
-        <item>200</item>
-        <item>100</item>
+        <item>550</item>
+        <item>850</item>
+        <item>1000</item>
+        <item>750</item>
+        <item>350</item>
+        <item>275</item>
+        <item>400</item>
+        <item>800</item>
+        <item>400</item>
+        <item>1350</item>
+        <item>1400</item>
+        <item>1400</item>
+        <item>1400</item>
+        <item>1350</item>
+        <item>1450</item>
+        <item>1050</item>
+        <item>850</item>
+        <item>850</item>
+        <item>900</item>
+        <item>850</item>
+        <item>850</item>
+        <item>950</item>
+        <item>650</item>
+        <item>800</item>
+        <item>1550</item>
+        <item>360</item>
+        <item>675</item>
+        <item>12000</item>
+        <item>2650</item>
+        <item>750</item>
+        <item>1000</item>
+        <item>395</item>
+        <item>1000</item>
+        <item>400</item>
+        <item>275</item>
+        <item>1350</item>
+        <item>500</item>
+        <item>1350</item>
+        <item>400</item>
+        <item>300</item>
+        <item>900</item>
+        <item>1100</item>
+        <item>650</item>
+        <item>750</item>
+        <item>395</item>
+        <item>2750</item>
+        <item>875</item>
+        <item>275</item>
+        <item>400</item>
+        <item>675</item>
+        <item>250</item>
+        <item>450</item>
+        <item>800</item>
+        <item>4250</item>
+        <item>350</item>
+        <item>220</item>
+        <item>400</item>
+        <item>250</item>
+        <item>950</item>
+        <item>495</item>
+        <item>495</item>
+        <item>1450</item>
+        <item>600</item>
+        <item>1550</item>
+        <item>1050</item>
+        <item>250</item>
+        <item>375</item>
+        <item>1675</item>
+        <item>1775</item>
+        <item>350</item>
+
+
     </integer-array>
 </resources>

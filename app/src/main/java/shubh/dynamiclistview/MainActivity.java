@@ -6,18 +6,24 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.view.MotionEvent;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidtrip.plugins.searchablespinner.SearchableSpinner;
 import com.github.danielfelgar.drawreceiptlib.ReceiptBuilder;
 import com.mazenrashed.printooth.Printooth;
 import com.mazenrashed.printooth.data.printable.ImagePrintable;
@@ -33,16 +39,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+import static android.widget.AbsListView.CHOICE_MODE_SINGLE;
+
 
 public class MainActivity extends Activity implements PrintingCallback {
 
-    ListView listview;
+    AbsListView listview;
     ImageView ivReceipt;
     Button Addbutton;
     Button generateButton;
     Button btn_unpair_pair;
     Button btn_print;
+    Button Delbutton;
     Printing printing;
+    Bitmap bonnetje;
+    EditText tafel;
 
 
     @Override
@@ -51,12 +62,15 @@ public class MainActivity extends Activity implements PrintingCallback {
 
         setContentView(R.layout.activity_main);
 
-        listview = (ListView) findViewById(R.id.listView1);
+        listview = (AbsListView) findViewById(R.id.listView1);
+        listview.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         Addbutton = (Button) findViewById(R.id.button);
         generateButton = (Button) findViewById(R.id.button1);
         ivReceipt = findViewById(R.id.ivReceipt);
         btn_unpair_pair = (Button) findViewById(R.id.BtnPairUnpair);
         btn_print = (Button) findViewById(R.id.BtnPrint);
+        tafel = (EditText) findViewById(R.id.tafel);
+        Delbutton= (Button) findViewById(R.id.button3);
 
 
         if (printing != null)
@@ -80,16 +94,27 @@ public class MainActivity extends Activity implements PrintingCallback {
 
         changePairAndUnpair();
 
-        final String date = String.valueOf(android.text.format.DateFormat.format("dd-MM-yyyy", new java.util.Date()));
+        final String date = String.valueOf(android.text.format.DateFormat.format("dd/MM/yyyy", new java.util.Date()));
 
             /*
             Set spinner
              */
-        final Spinner spinner = findViewById(R.id.spinner);
+
+        final SearchableSpinner spinner;
+        spinner = (SearchableSpinner) findViewById(R.id.SearchableSpinner);
         ArrayAdapter<CharSequence> spinneradapter = ArrayAdapter.createFromResource(
                 this, R.array.products, android.R.layout.simple_spinner_item);
         spinneradapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(spinneradapter);
+       // spinner.isInsideSearchEditText(event);
+
+        //@Override
+        //public boolean onTouchEvent(MotionEvent event) {
+         //   if (!spinner.isInsideSearchEditText(event)) {
+          //      spinner.hideEdit();
+           // }
+           // return super.onTouchEvent(event);
+        //}
 
         /*
         Set product prices array
@@ -110,15 +135,39 @@ public class MainActivity extends Activity implements PrintingCallback {
 
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (MainActivity.this, android.R.layout.simple_list_item_1, ListElementsArrayList);
+                (MainActivity.this, android.R.layout.simple_list_item_activated_1, ListElementsArrayList);
 
         listview.setAdapter(adapter);
+
 
         Addbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (spinner.getSelectedItem() != null)
                 ListElementsArrayList.add(spinner.getSelectedItem().toString());
+
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        final String[] delposition = {null};
+
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3) {
+                final String value = (String) adapter.getItemAtPosition(position);
+               delposition[0] = value;
+            }
+        });
+
+        Delbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                adapter.remove(delposition[0]);
 
                 adapter.notifyDataSetChanged();
             }
@@ -127,24 +176,31 @@ public class MainActivity extends Activity implements PrintingCallback {
         generateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bitmap barcode = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.barcode);
+               // Bitmap barcode = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.logo);
+               // int srcWidth = barcode.getWidth();
+               // int srcHeight = barcode.getHeight();
+               // int dstWidth = (int) (srcWidth * 1.8f);
+              //  int dstHeight = (int) (srcHeight * 1.8f);
+              //  Bitmap logotje = Bitmap.createScaledBitmap(barcode, dstWidth, dstHeight, true);
 
-
+                EditText et = (EditText) findViewById(R.id.tafel);
+                String tafelnummer = et.getText().toString();
                 ReceiptBuilder receipt = new ReceiptBuilder(1200);
                 receipt.setMargin(30, 20).
                         setAlign(Paint.Align.CENTER).
                         setColor(Color.BLACK).
-                        addImage(barcode).
+                        //addImage(logotje).
                         setTextSize(60).
                         setTypeface(getApplicationContext(), "fonts/RobotoMono-Regular.ttf").
                         addText("my store").
-                        addText("Tel: 000-1234567").
+                        addText("Tel: 010-1234567").
                         addBlankSpace(30).
                         setAlign(Paint.Align.LEFT).
-                        addText("Tafel: 2", false).
+                        addText(tafelnummer, false).
                         setAlign(Paint.Align.RIGHT).
                         addText(date).
                         setAlign(Paint.Align.LEFT).
+                        addParagraph().
                         addLine().
                         addParagraph().
                         addParagraph().
@@ -157,6 +213,7 @@ public class MainActivity extends Activity implements PrintingCallback {
                  */
 
                 receipt.setTypeface(getApplicationContext(), "fonts/RobotoMono-Regular.ttf");
+                receipt.setTextSize(50);
                 int totalprice = 0;
 
                 String[][] ItemArray = new String[productArrayList.size()][3];
@@ -195,7 +252,8 @@ public class MainActivity extends Activity implements PrintingCallback {
                 for (int i = 0; i < productArrayList.size(); i++) {
                     if (Float.parseFloat(ItemArray[i][1]) != 0) {
                         receipt.setAlign(Paint.Align.LEFT).
-                                addText(ItemArray[i][2] + "x" + ItemArray[i][0], false).
+                                setTextSize(42).
+                                addText(ItemArray[i][2] + "x " + ItemArray[i][0], false).
                                 setAlign(Paint.Align.RIGHT).
                                 addText("€" + String.format("%.2f", Float.parseFloat(ItemArray[i][1])));
                     }
@@ -206,6 +264,8 @@ public class MainActivity extends Activity implements PrintingCallback {
                 float totalpricefloat = totalprice / 100f;
                 receipt.setTypeface(getApplicationContext(), "fonts/RobotoMono-Regular.ttf").
                         setAlign(Paint.Align.LEFT).
+                        addParagraph().
+                        addLine().
                         addParagraph().
                         setTypeface(getApplicationContext(), "fonts/RobotoMono-Bold.ttf").
                         addText("Excl.", false).
@@ -227,8 +287,12 @@ public class MainActivity extends Activity implements PrintingCallback {
                         addParagraph().
                         setAlign(Paint.Align.CENTER).
                         setTypeface(getApplicationContext(), "fonts/RobotoMono-Regular.ttf").
-                        addParagraph();
-                ivReceipt.setImageBitmap(receipt.build());
+                        addParagraph().
+                        addLine().
+                        addParagraph().
+                        addText("Tot Ziens");
+                bonnetje = receipt.build();
+                ivReceipt.setImageBitmap(bonnetje);
             }
         });
     }
@@ -236,34 +300,30 @@ public class MainActivity extends Activity implements PrintingCallback {
     private void PrintImages() {
         ArrayList<Printable> printables = new ArrayList<>();
         Log.d("Printapp", "PrintImages called");
-        ImageView imageView = findViewById(R.id.ivReceipt);
-        Bitmap bonnetje = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
-        Bitmap kleinbonnetje = Bitmap.createScaledBitmap(
-                bonnetje, 600, 500, false);
+        Bitmap b = bonnetje;
+        int w = b.getWidth();
+        Log.d("Printapp", "width:" + w);
+        int h = b.getHeight();
+        Log.d("Printapp", "Height:" + h);
+        int srcWidth = bonnetje.getWidth();
+        int srcHeight = bonnetje.getHeight();
+        int dstWidth = (int) (srcWidth * 0.48f);
+        int dstHeight = (int) (srcHeight * 0.48f);
+        Bitmap dstBitmap = Bitmap.createScaledBitmap(bonnetje, dstWidth, dstHeight, true);
         //Load image from internet (needs to load image from ivRFeceipt instead
-        Picasso.get()
-                .load(R.drawable.barcode)
-                .resize(402, 121)
-                .into(new Target() {
-                    @Override
-                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                        printables.add(new ImagePrintable.Builder(kleinbonnetje).build());
+        Bitmap barcode = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.logo);
+        int srcWidth2 = barcode.getWidth();
+        int srcHeight2 = barcode.getHeight();
+        int dstWidth2 = (int) (srcWidth2 * 1.8f);
+        int dstHeight2 = (int) (srcHeight2 * 1.8f);
+        Bitmap logotje = Bitmap.createScaledBitmap(barcode, dstWidth2, dstHeight2, true);
+
+                        printables.add(new ImagePrintable.Builder(logotje).build());
+                        printables.add(new ImagePrintable.Builder(dstBitmap).build());
                         Log.d("Printapp", "Image added");
                         Printooth.INSTANCE.printer().print(printables);
                         Log.d("Printapp", "picasso print");
 
-                    }
-
-                    @Override
-                    public void onBitmapFailed(Exception e, Drawable errorDrawable) {
-                        Log.d("Printapp", "Picasso bitmap error");
-                    }
-
-                    @Override
-                    public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                    }
-                });
 
     }
 
